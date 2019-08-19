@@ -32,14 +32,36 @@ var quizQuestions = [
 ];
 
 
-let counter = 30;
+let counter = 29;
 let currentQuestion = 0;
 let score = 0;
 let lost = 0;
 let timer;
 
+// Timer
+
+function countDown() {
+    //Decreases
+    counter--;
+
+    $("#time").html("Time Remaining: " + counter);
+
+    if (counter === 0) {
+        timeisDone();
+
+    }
+    // sets timer to 0
+    function timeisDone() {
+        clearInterval(timer);
+    
+    }
+}
+
+
 // function that passes the choices, goes through them, loops them 
 function loadQuestion() {
+    counter = 29;
+    timer = setInterval(countDown, 1000);
 
     var question = quizQuestions[currentQuestion].question;
     var choices = quizQuestions[currentQuestion].choices;
